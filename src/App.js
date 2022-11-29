@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API, Storage } from "aws-amplify";
+import { API, Storage } from 'aws-amplify';
 import {
   Button,
   Flex,
@@ -39,6 +39,7 @@ const App = ({ signOut }) => {
     );
     setNotes(notesFromAPI);
   }
+  
 
   async function createNote(event) {
     event.preventDefault();
@@ -94,9 +95,18 @@ const App = ({ signOut }) => {
           </Button>
         </Flex>
       </View>
+      <View
+  name="image"
+  as="input"
+  type="file"
+  style={{ alignSelf: "end" }}
+/>
+
       <Heading level={2}>Current Notes</Heading>
+       
+
       <View margin="3rem 0">
-      {notes.map((note) => (
+  {notes.map((note) => (
   <Flex
     key={note.id || note.name}
     direction="row"
@@ -120,12 +130,7 @@ const App = ({ signOut }) => {
   </Flex>
 ))}
       </View>
-      <View
-  name="image"
-  as="input"
-  type="file"
-  style={{ alignSelf: "end" }}
-/>    
+       
 
       <Button onClick={signOut}>Sign Out</Button>
     </View>
